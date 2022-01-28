@@ -1,4 +1,4 @@
-import { tokens, ether, ETHER_ADDRESS, EVM_REVERT, wait } from './helpers'
+const { tokens, ether, ETHER_ADDRESS, EVM_REVERT, wait } = require('./helpers');
 
 const Token = artifacts.require('./Token')
 const DecentralizedBank = artifacts.require('./Bank')
@@ -135,10 +135,9 @@ contract('bankContract', ([deployer, user]) => {
 
         describe('success', () => {
             it('balance should increase', async () => {
-                balance = await bankContract.getKoinsBalanceOf(user)
+                balance = await tokenContract.balanceOf(user)
                 expect(Number(balance)).to.be.above(0)
             })
-
         })
 
     });

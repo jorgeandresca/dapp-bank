@@ -113,10 +113,6 @@ contract Bank {
         emit SwapETHtoKNSEvent(msg.sender, msg.value, knsAmount);
     }
 
-    function getKoinsBalanceOf(address user) public view returns (uint256) {
-        return token.balanceOf(user);
-    }
-
     function borrow() public payable {
         //check if collateral is >= than 0.01 ETH
         //check if user doesn't have active loan

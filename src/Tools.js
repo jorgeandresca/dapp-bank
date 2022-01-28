@@ -93,7 +93,7 @@ module.exports = {
         const separator = ",";
         num = num.toString();
         let decimals;
-        if (separator == ",") {
+        if (separator === ",") {
             decimals = num.split(".")[1];
             num = num.split(".")[0]
         }
@@ -104,10 +104,10 @@ module.exports = {
         
         num = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-        if (decimals == undefined)
+        if (decimals === undefined)
             return num;
         else
-            if (separator == ",")
+            if (separator === ",")
                 return num + "." + decimals;
             else
                 return num + "," + decimals;
@@ -276,18 +276,18 @@ module.exports = {
             return null;
 
         let month = parseInt(dateStr.split("-")[1]);
-        if (month == 1) month = "enero";
-        else if (month == 2) month = "febrero";
-        else if (month == 3) month = "marzo";
-        else if (month == 4) month = "abril";
-        else if (month == 5) month = "mayo";
-        else if (month == 6) month = "junio";
-        else if (month == 7) month = "julio";
-        else if (month == 8) month = "agosto";
-        else if (month == 9) month = "septiembre";
-        else if (month == 10) month = "octubre";
-        else if (month == 11) month = "noviembre";
-        else if (month == 12) month = "diciembre";
+        if (month === 1) month = "enero";
+        else if (month === 2) month = "febrero";
+        else if (month === 3) month = "marzo";
+        else if (month === 4) month = "abril";
+        else if (month === 5) month = "mayo";
+        else if (month === 6) month = "junio";
+        else if (month === 7) month = "julio";
+        else if (month === 8) month = "agosto";
+        else if (month === 9) month = "septiembre";
+        else if (month === 10) month = "octubre";
+        else if (month === 11) month = "noviembre";
+        else if (month === 12) month = "diciembre";
 
         return dateStr.split("-")[0] + "-" + month + "-" + dateStr.split("-")[2]
     },
@@ -421,7 +421,7 @@ module.exports = {
         return parseInt(nowText);
     },
     equalArrays(array1, array2) {
-        return JSON.stringify(array1) == JSON.stringify(array2);
+        return JSON.stringify(array1) === JSON.stringify(array2);
     },
     cloneObject(object) {
         return JSON.parse(JSON.stringify(object))

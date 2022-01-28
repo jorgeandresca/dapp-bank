@@ -11,8 +11,11 @@ import Tools from '../Tools'
 class App extends Component {
 
     async componentWillMount() {
+        
+
         await this.loadBlockchainData(this.props.dispatch)
     }
+
 
     async loadBlockchainData(dispatch) {
         let web3;
@@ -50,7 +53,7 @@ class App extends Component {
 
         try {
             console.log(Token.networks[networkId])
-            if (Token.networks[networkId] == undefined) {
+            if (Token.networks[networkId] === undefined) {
                 this.setState({ errMessage: "Contract not deployed in this network" })
                 return;
             }
@@ -71,8 +74,8 @@ class App extends Component {
             const ethToKnsConversion = await bankContract.methods
                 .ethToKnsConversion().call();
 
-            let balance_kns = await bankContract.methods
-                .getKoinsBalanceOf(account).call();
+            let balance_kns = await tokenContract.methods
+                .balanceOf(account).call();
             balance_kns = web3.utils.fromWei(balance_kns, 'ether');
 
             let bankBalance = (await web3.eth.getBalance(bankAddress)).toString();
@@ -81,7 +84,6 @@ class App extends Component {
             let bankUserBalance = await bankContract.methods
                 .etherBalanceOf(account).call();
             bankUserBalance = web3.utils.fromWei(bankUserBalance, 'ether')
-
 
 
             this.setState({
